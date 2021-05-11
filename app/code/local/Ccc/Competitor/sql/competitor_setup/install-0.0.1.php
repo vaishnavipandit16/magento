@@ -1,8 +1,7 @@
 <?php
-$installer = $this;
-$installer->startSetup();
+$this->startSetup();
 
-$installer->addEntityType(Ccc_Competitor_Model_Resource_Competitor::ENTITY,[
+$this->addEntityType(Ccc_Competitor_Model_Resource_Competitor::ENTITY,[
     'entity_model' => 'competitor/competitor',
     'attribute_model' => 'competitor/attribute',
     'table' => 'competitor/competitor',
@@ -11,8 +10,8 @@ $installer->addEntityType(Ccc_Competitor_Model_Resource_Competitor::ENTITY,[
     'entity_attribute_collection' => 'competitor/competitor_attribute_collection',
 
 ]);
-$installer->createEntityTables('competitor');
-$installer->createEntities();
+$this->createEntityTables('competitor');
+$this->installEntities();
 
 $default_attribute_set_id = Mage::getModel('eav/entity_setup','core_setup')
                             ->getAttributeSetId('competitor','Default');
