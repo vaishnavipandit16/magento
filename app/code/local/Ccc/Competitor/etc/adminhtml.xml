@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<config>
+    <menu>
+        <competitor>
+            <title>Competitor</title>
+            <children>
+                <competitor>
+                    <title>Manage Competitor</title>
+                    <action>*/competitor</action>
+                </competitor>
+                <competitor_attribute>
+                    <title>Manage Attribute</title>
+                    <action>*/competitor_attribute</action>
+                </competitor_attribute>
+                <competitor_set>
+                    <title>Manage set</title>
+                    <action>*/competitor_set</action>
+                </competitor_set>
+            </children>
+        </competitor>
+    </menu>
+</config>
