@@ -1,0 +1,49 @@
+<?php $groups = $this->getGroups(); ?>
+<h1>Group List</h1>
+<?php echo $this->getPagerHtml(); ?>
+<a href="<?php echo $this->getAddUrl(); ?>" class="button">
+    <?php echo $this->__('Add New group'); ?>
+</a>
+<br>
+
+<?php if ($groups->getData()) : ?>
+<table class="data-table" id="my-product-table">
+    <thead>
+        <tr>
+            <th>
+                <?php echo $this->__('#'); ?>
+            </th>
+
+            <th>
+                <?php echo $this->__('Group Name'); ?>
+            </th>
+
+            <th>
+                <?php echo $this->__('Action'); ?>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($groups->getData() as $group) : ?>
+        <tr>
+            <td>
+                <?php echo $group['group_id']; ?>
+            </td>
+            <td>
+                <?php echo $group['attribute_group_name']; ?>
+            </td>
+            <td>
+                <a href="../editgroup/id/<?php echo $group['attribute_group_id']; ?>" class="button" id="edit">edit</a>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+<?php else: ?>
+<?php echo 'No records found'; ?>
+<?php endif; ?>
+
+<script>
+decorateTable('my-product-table');
+</script>
