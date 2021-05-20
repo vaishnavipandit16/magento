@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Ccc_PaymentMethod>
+            <version>1.0.0</version>
+        </Ccc_PaymentMethod>
+    </modules>
+
+    <global>
+        <models>
+            <paymentmethod>
+                <class>Ccc_PaymentMethod_Model</class>
+            </paymentmethod>
+        </models>
+        <helpers>
+            <paymentmethod>
+                <class>Ccc_PaymentMethod_Helper</class>
+            </paymentmethod>
+        </helpers>
+        <!-- <blocks>
+            <paymentmethod>
+                <class>Ccc_PaymentMethod_Block</class>
+            </paymentmethod>
+        </blocks> -->
+    </global>
+
+    <default>
+        <payment>
+            <cod>
+                <model>paymentmethod/standard</model>
+                // very important thing, here you select the model for your payment method
+                <active>1</active>
+                <order_status>pending</order_status>
+                <title>COD</title>
+                <payment_action>sale</payment_action>
+                <submit_url>https://someurl.com</submit_url>
+                <merchant_id>Insert merchant id</merchant_id>
+                <allowspecific>0</allowspecific>
+                <sort_order>1</sort_order>
+            </cod>
+        </payment>
+    </default>
+
+    <frontend>
+        <routers>
+            <paymentmethod>
+                <use>standard</use>
+                <args>
+                    <module>Ccc_PaymentMethod</module>
+                    <frontname>paymentmethod</frontname>
+                </args>
+            </paymentmethod>
+        </routers>
+    </frontend>
+</config>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Ccc_PaymentMethod>
+            <active>true</active>
+            <codePool>local</codePool>
+
+            <depends>
+                <Mage_Payment />
+            </depends>
+        </Ccc_PaymentMethod>
+    </modules>
+</config>
