@@ -1,9 +1,0 @@
-<h1>Edit Attribute</h1>
-<strong>Attribute Name</strong>
-
-<form method="post" action="<?php echo $this->getEditAttributeUrl();?>">
-    <input type="text" name="frontend_label" id="frontend_label"
-        value="<?php echo $this->getAttribute()->getData()['frontend_label'];?>">
-    <input type="submit" value="Edit" name="submit" class="button"><br><br>
-    <a href="<?php echo $this->getDeleteAttributeUrl(); ?>" class="button" id="delete">Delete</a>
-</form>
