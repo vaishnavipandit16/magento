@@ -1,0 +1,26 @@
+<?php $orderItems = $this->getOrdersList(); ?>
+<div>
+    <h2>Ordered Item</h2>
+    <table border="1" width="100%" class="data-table" id="my-product-table">
+        <tr>
+            <th>Order Id</th>
+            <th>Product Id</th>
+            <th>Name</th>
+            <th>Sku</th>
+            <th>Type</th>
+        </tr>
+        <?php if (!count($orderItems)): ?>
+        <h5>No Order Available</h5>
+        <?php else: ?>
+        <?php foreach ($orderItems as $orderItem): ?>
+        <tr>
+            <td><?php echo $orderItem['order_id']; ?></td>
+            <td><?php echo $orderItem['entity_id']; ?></td>
+            <td><?php echo $orderItem['name']; ?></td>
+            <td><?php echo $orderItem['sku']; ?></td>
+            <td><?php echo $orderItem['type_id']; ?></td>
+        </tr>
+        <?php endforeach; ?>
+        <?php endif; ?>
+    </table>
+</div>
