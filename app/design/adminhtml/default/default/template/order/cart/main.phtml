@@ -1,0 +1,13 @@
+<form action="" method="POST" id="cartForm">
+    <?php echo $this->getBlockHtml('formkey'); ?>
+    <?php echo $this->getLayout()->createBlock('order/adminhtml_order_cart_customer')->toHtml(); ?>
+    <div id="data" style="display:none;">
+        <?php echo $this->getLayout()->createBlock('order/adminhtml_order_cart_account')->toHtml(); ?>
+        <?php echo $this->getLayout()->createBlock('order/adminhtml_order_cart_product')->toHtml(); ?>
+        <?php echo $this->getLayout()->createBlock('order/adminhtml_order_cart_cartitems')->toHtml(); ?>
+        <?php echo $this->getLayout()->createBlock('order/adminhtml_order_cart_billingaddress')->toHtml(); ?>
+        <?php echo $this->getLayout()->createBlock('order/adminhtml_order_cart_shippingaddress')->toHtml(); ?>
+        <?php echo $this->getLayout()->createBlock('order/adminhtml_order_cart_shipping')->toHtml(); ?>
+        <?php echo $this->getLayout()->createBlock('order/adminhtml_order_cart_payment')->toHtml(); ?>
+    </div>
+</form>
