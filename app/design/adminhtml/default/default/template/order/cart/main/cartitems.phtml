@@ -1,0 +1,72 @@
+<?php $cartData = $this->getCart()->getCartItems();
+// echo '<pre>';
+// print_r($cartData->getData());
+// die(); 
+?>
+<br>
+<form id="cartItem" method="post"
+    action="<?php echo $this->getUrl('order/adminhtml_order_cart/updateItem',['id' =>$this->getRequest()->getParam('id')]); ?>">
+    <?php echo $this->getBlockHtml('formkey'); ?>
+    <div id="order-items">
+        <div class="entry-edit">
+            <div class="entry-edit-head">
+                <h4 class="icon-head head-cart">Cart Items</h4>
+                <button type="submit" name="button" style="float: right;">Update Quality</button>
+            </div>
+        </div>
+
+        <div class="grid" id="order-items_grid">
+            <table cellspacing="0" class="data order-tables">
+                <!-- <colgroup>
+                    <col>
+                    <col width="100">
+                    <col width="40">
+                    <col width="100">
+                    <col width="80">
+                    <col width="100">
+                    <col width="80">
+                </colgroup> -->
+                <thead>
+                    <tr class="headings">
+                        <th class="no-link">Id</th>
+                        <th class="no-link">Product</th>
+                        <th class="no-link">Qty</th>
+                        <th class="no-link">Price</th>
+                        <th class="no-link">Discount</th>
+                        <th class="no-link">Base Price</th>
+
+                        <th class="no-link last">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <?php if($cartData->getData()): ?>
+                    <?php foreach ($cartData->getData() as $cart): ?>
+                    <tr>
+                        <td class="empty-text a-center"><?php echo $cart['cart_item_id']; ?></td>
+                        <td class="empty-text a-center"><?php echo $cart['name']; ?></td>
+                        <td class="empty-text a-center"><input type="number" min="0"
+                                name="quantity[<?php echo $cart['cart_item_id']; ?>]"
+                                value="<?php echo $cart['quantity']; ?>"></td>
+                        <td class="empty-text a-center"><?php echo $cart['price']; ?></td>
+                        <td class="empty-text a-center"><?php echo $cart['discount']; ?></td>
+                        <td class="empty-text a-center"><?php echo $cart['base_price']; ?></td>
+
+                        <td class="empty-text a-center">
+                            <a
+                                href="<?php echo $this->getUrl('order/adminhtml_order_cart/deleteItem',['id' =>$this->getRequest()->getParam('id'),'itemid' => $cart['cart_item_id']]); ?>">
+                                <button type="button">Delete</button>
+                            </a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+
+                    <?php else: ?>
+                    <td class="empty-text a-center" colspan="100">Record Not Found</td>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+</form>

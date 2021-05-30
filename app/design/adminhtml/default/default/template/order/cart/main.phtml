@@ -1,13 +1,31 @@
-<form action="" method="POST" id="cartForm">
+<?php $cart = $this->getCart(); ?>
+<form
+    action="<?php echo $this->getUrl('order/adminhtml_order/placeOrder',['id' => $this->getRequest()->getParam('id')]); ?>"
+    method="POST" id="cartForm">
     <?php echo $this->getBlockHtml('formkey'); ?>
-    <?php echo $this->getLayout()->createBlock('order/adminhtml_order_cart_customer')->toHtml(); ?>
-    <div id="data" style="display:none;">
-        <?php echo $this->getLayout()->createBlock('order/adminhtml_order_cart_account')->toHtml(); ?>
-        <?php echo $this->getLayout()->createBlock('order/adminhtml_order_cart_product')->toHtml(); ?>
-        <?php echo $this->getLayout()->createBlock('order/adminhtml_order_cart_cartitems')->toHtml(); ?>
-        <?php echo $this->getLayout()->createBlock('order/adminhtml_order_cart_billingaddress')->toHtml(); ?>
-        <?php echo $this->getLayout()->createBlock('order/adminhtml_order_cart_shippingaddress')->toHtml(); ?>
-        <?php echo $this->getLayout()->createBlock('order/adminhtml_order_cart_shipping')->toHtml(); ?>
-        <?php echo $this->getLayout()->createBlock('order/adminhtml_order_cart_payment')->toHtml(); ?>
+    <div class="content-header">
+        <div id="order-header">
+            <h3 class="icon-head head-sales-order">Create New Order</h3>
+        </div>
+        <div class="form-buttons">
+            <div class="form-buttons">
+                <button id="submit_order_top_button" type="submit" class="scalable save">
+                    <span>Place Order</span>
+                </button>
+            </div>
+            <div class="form-buttons">
+                <a href="<?php echo $this->getUrl('order/adminhtml_order_cart/showCustomer'); ?>">
+                    <button type="button"><span>Cancel<span></button>
+                </a>
+            </div>
+        </div>
     </div>
+    <?php echo $this->getChild('account')->setCart($cart)->toHtml(); ?>
+    <?php echo $this->getChildHtml('product'); ?>
+    <?php echo $this->getChild('cartitems')->setCart($cart)->toHtml() ?>
+    <?php echo $this->getChild('billingaddress')->setCart($cart)->toHtml(); ?>
+    <?php echo $this->getChild('shippingaddress')->setCart($cart)->toHtml(); ?>
+    <?php echo $this->getChild('payment')->setCart($cart)->toHtml(); ?>
+    <?php echo $this->getChild('shipping')->setCart($cart)->toHtml(); ?>
+    <?php echo $this->getChild('total')->setCart($cart)->toHtml(); ?>
 </form>

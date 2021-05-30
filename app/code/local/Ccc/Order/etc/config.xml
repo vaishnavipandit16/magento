@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Ccc_Order>
-            <version>0.0.3</version>
+            <version>0.0.8</version>
         </Ccc_Order>
     </modules>
     <admin>
@@ -55,6 +55,11 @@
     </adminhtml>
     <global>
         <models>
+            <customer>
+                <rewrite>
+                    <customer>Ccc_Order_Model_Customer</customer>
+                </rewrite>
+            </customer>
             <order>
                 <class>Ccc_Order_Model</class>
                 <resourceModel>ccc_order_resource</resourceModel>
