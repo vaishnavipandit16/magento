@@ -4,7 +4,7 @@ $installer->startSetup();
 
 //Cart Table
 $cart = $installer->getConnection()
-            ->newTable($installer->getTable('check/cart'))
+            ->newTable($installer->getTable('order/cart'))
             ->addColumn('cart_id',
                 Varien_Db_Ddl_Table::TYPE_INTEGER,null,
                 array(
@@ -58,7 +58,7 @@ $cart = $installer->getConnection()
             );
             // ->addForeignKey(
             //     $installer->getFkName(
-            //         'check/cart',
+            //         'order/cart',
             //         'customer_id',
             //         'customer/entity',
             //         'entity_id'
@@ -74,7 +74,7 @@ $installer->getConnection()->createTable($cart);
 
 //Cart Address
 $cart_address = $installer->getConnection()
-                    ->newTable($installer->getTable('check/cart_address'))
+                    ->newTable($installer->getTable('order/cart_address'))
                     ->addColumn('cart_address_id',
                         Varien_DB_Ddl_Table::TYPE_INTEGER,null,
                         array(
@@ -140,13 +140,13 @@ $cart_address = $installer->getConnection()
                     );
                     // ->addForeignKey(
                     //     $installer->getFkName(
-                    //         'check/cart_item',
+                    //         'order/cart_item',
                     //         'cart_id',
-                    //         'check/cart',
+                    //         'order/cart',
                     //         'cart_id'
                     //     ),
                     //     'cart_id',
-                    //     $installer->getTable('check/cart'),
+                    //     $installer->getTable('order/cart'),
                     //     'cart_id',
                     //     Varien_Db_Ddl_Table::ACTION_CASCADE,
                     //     Varien_Db_Ddl_Table::ACTION_CASCADE
@@ -156,7 +156,7 @@ $installer->getConnection()->createTable($cart_address);
 
 //Cart_Item
 $cart_item = $installer->getConnection()
-            ->newTable($installer->getTable('check/cart_item'))
+            ->newTable($installer->getTable('order/cart_item'))
             ->addColumn('cart_item_id',
                 Varien_Db_Ddl_Table::TYPE_INTEGER,null,
                 array(
@@ -214,7 +214,7 @@ $installer->getConnection()->createTable($cart_item);
 
 //Order Table
 $order = $installer->getConnection()
-            ->newTable($installer->getTable('check/order'))
+            ->newTable($installer->getTable('order/order'))
             ->addColumn('order_id',
                 Varien_Db_Ddl_Table::TYPE_INTEGER,null,
                 array(
@@ -271,7 +271,7 @@ $installer->getConnection()->createTable($order);
 
 //Order_Item
 $order_item = $this->getConnection()
-                ->newTable($installer->getTable('check/order_item'))
+                ->newTable($installer->getTable('order/order_item'))
                 ->addColumn('order_item_id',
                     Varien_Db_Ddl_Table::TYPE_INTEGER,null,
                     array(
@@ -321,7 +321,7 @@ $installer->getConnection()->createTable($order_item);
 
 //Order_Address
 $order_address = $installer->getConnection()
-                    ->newTable($installer->getTable('check/order_address'))
+                    ->newTable($installer->getTable('order/order_address'))
                     ->addColumn('order_address_id',
                         Varien_DB_Ddl_Table::TYPE_INTEGER,null,
                         array(
