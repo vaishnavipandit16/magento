@@ -1,0 +1,71 @@
+<?php $this->prepareTab(); ?>
+<?php $tabs = $this->getTabs(); 
+// echo '<pre>';
+// print_r($tabs);
+// die();
+?>
+
+<?php foreach ($tabs as $key => $tab) : ?>
+
+<p class="button tab p1" id="<?php echo $key ?>" onclick="getTabContent(this)">
+    <?php echo $tab['label']; ?></p> <br>
+
+<?php endforeach; ?>
+
+<p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo;
+        </small><?php echo $this->__('Back') ?></a></p>
+
+<script type="text/javascript">
+var tabId;
+var tabsData = <?php echo json_encode($tabs) ?>;
+console.log(tabsData);
+
+getTabContent('', 'group_62');
+
+function getTabContent(tab, defaultTab = '') {
+    if (defaultTab) {
+        tabId = defaultTab;
+    } else {
+        tabId = tab.id;
+    }
+    if (document.getElementById('vendorProductForm')) {
+        jQuery('.tab').each(function(id, obj) {
+            var div = document.createElement('div');
+            console.log('ID : ' + obj.id);
+            div.id = obj.id + '_content';
+            jQuery(div).addClass('tabContent');
+            if (!document.getElementById(obj.id + '_content')) {
+                document.getElementById('vendorProductForm').appendChild(div);
+                document.getElementById(obj.id + '_content').innerHTML = tabsData[obj.id]['content'];
+            }
+        });
+        jQuery('.tabContent').hide();
+        document.getElementById(tabId + '_content').show();
+
+        jQuery('.tab').addClass('inactive');
+        jQuery('#' + tabId).addClass('active');
+        jQuery('#' + tabId).removeClass('inactive');
+    }
+    // document.getElementById('vendorProductForm').innerHTML = tabsData[tabId]['content'];
+}
+</script>
+<style type="text/css">
+.tabButton {
+    background: #9cbdd4;
+    border: none;
+    margin-bottom: 5px;
+    padding: 5px;
+    width: 150px;
+    color: white;
+}
+
+.tab button.active {
+    background: #283d59;
+}
+
+.p1 {
+    margin-bottom: 5px;
+    width: 150px;
+
+}
+</style>
