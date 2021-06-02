@@ -1,0 +1,400 @@
+<?php 
+$countries = $this->getCountries(); 
+//$addresses = $this->getBillingAddress(); 
+?>
+<form id="billingAddressForm" method="post"
+    action="<?php echo $this->getUrl('order/adminhtml_order_cart/saveCustomer'); ?>">
+    <?php echo $this->getBlockHtml('formkey'); ?>
+    <div class="content-header">
+        <div id="order-header">
+            <h3 class="icon-head head-sales-order">Create New Customer</h3>
+        </div>
+        <div class="form-buttons">
+            <div class="form-buttons">
+                <button id="submit_order_top_button" type="submit" class="scalable save">
+                    <span>Save</span>
+                </button>
+            </div>
+            <div class="form-buttons">
+                <a href="<?php echo $this->getUrl('order/adminhtml_order_cart/showCustomer'); ?>">
+                    <button type="button"><span>Cancel<span></button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="order-form_account">
+        <div class="entry-edit">
+            <div class="entry-edit-head">
+                <h4 class="icon-head fieldset-legend head-account">Account Information</h4>
+            </div>
+            <div id="customer_account_fieds">
+                <div class="fieldset " id="main">
+                    <div class="hor-scroll">
+                        <table cellspacing="0" class="form-list">
+                            <tbody>
+                                <tr>
+                                    <td class="label"><label for="group_id">Group <span
+                                                class="required">*</span></label>
+                                    </td>
+                                    <td class="value">
+                                        <select id="group_id" name="order[account][group_id]"
+                                            class=" required-entry required-entry select">
+                                            <option value="1" selected="selected">General</option>
+                                            <option value="2">Wholesale</option>
+                                            <option value="3">Retailer</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="label"><label for="email">Email</label></td>
+                                    <td class="value">
+                                        <input id="email" name="order[account][email]" value=""
+                                            class="validate-email input-text" type="text">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="order-addresses">
+        <div id="order-billing_address" class="box-left">
+            <div class="entry-edit">
+
+                <div class="entry-edit-head">
+                    <h4 class="icon-head fieldset-legend head-billing-address">Billing Address</h4>
+                </div>
+
+                <fieldset class="np">
+
+                    <div class="order-address" id="order-billing_address_fields">
+                        <div class="content">
+                            <div class="hor-scroll">
+                                <table cellspacing="0" class="form-list">
+                                    <tbody>
+                                        <tr>
+                                            <td class="label"><label for="order-billing_address_prefix">Prefix</label>
+                                            </td>
+                                            <td class="value">
+                                                <input id="order-billing_address_prefix"
+                                                    name="order[billing_address][prefix]" value="" class=" input-text"
+                                                    type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-billing_address_firstname">First Name
+                                                    <span class="required">*</span></label></td>
+                                            <td class="value">
+                                                <input id="order-billing_address_firstname"
+                                                    name="order[billing_address][firstname]" value=""
+                                                    class=" required-entry input-text required-entry" type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-billing_address_middlename">Middle
+                                                    Name/Initial</label></td>
+                                            <td class="value">
+                                                <input id="order-billing_address_middlename"
+                                                    name="order[billing_address][middlename]" value=""
+                                                    class=" input-text" type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-billing_address_lastname">Last Name
+                                                    <span class="required">*</span></label></td>
+                                            <td class="value">
+                                                <input id="order-billing_address_lastname"
+                                                    name="order[billing_address][lastname]" value=""
+                                                    class=" required-entry input-text required-entry" type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-billing_address_suffix">Suffix</label>
+                                            </td>
+                                            <td class="value">
+                                                <input id="order-billing_address_suffix"
+                                                    name="order[billing_address][suffix]" value="" class=" input-text"
+                                                    type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-billing_address_company">Company</label>
+                                            </td>
+                                            <td class="value">
+                                                <input id="order-billing_address_company"
+                                                    name="order[billing_address][company]" value="" class=" input-text"
+                                                    type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-billing_address_street0">Street Address
+                                                    <span class="required">*</span></label></td>
+                                            <td class="value">
+                                                <input id="order-billing_address_street0"
+                                                    name="order[billing_address][street]" value=""
+                                                    class="input-text required-entry" type="text">
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-billing_address_city">City <span
+                                                        class="required">*</span></label></td>
+                                            <td class="value">
+                                                <input id="order-billing_address_city"
+                                                    name="order[billing_address][city]" value=""
+                                                    class=" required-entry input-text required-entry" type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label>Country<span class="required">*</span></label>
+                                            </td>
+                                            <td class="value">
+                                                <select name="order[billing_address][country]"
+                                                    class="required-entry required-entry select">
+                                                    <?php foreach ($countries as $country) : ?>
+                                                    <option value="<?php echo $country['value'] ?>"
+                                                        <?php //if ($country['value'] == $addresses['country']) : ?><?php //endif; ?>>
+                                                        <?php echo $country['label'] ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-billing_address_region">State <span
+                                                        class="required">*</span></label></td>
+                                            <td class="value">
+                                                <input id="order-billing_address_region"
+                                                    name="order[billing_address][region]" value=""
+                                                    class=" required-entry input-text required-entry" type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-billing_address_postcode">Zip/Postal
+                                                    Code
+                                                    <span class="required">*</span></label></td>
+                                            <td class="value">
+                                                <input id="order-billing_address_postcode"
+                                                    name="order[billing_address][postcode]" value=""
+                                                    class=" required-entry input-text required-entry" type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-billing_address_telephone">Telephone
+                                                    <span class="required">*</span></label></td>
+                                            <td class="value">
+                                                <input id="order-billing_address_telephone"
+                                                    name="order[billing_address][telephone]" value=""
+                                                    class=" required-entry input-text required-entry" type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-billing_address_fax">Fax</label></td>
+                                            <td class="value">
+                                                <input id="order-billing_address_fax" name="order[billing_address][fax]"
+                                                    value="" class=" input-text" type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-billing_address_vat_id">VAT
+                                                    number</label>
+                                            </td>
+                                            <td class="value">
+                                                <input id="order-billing_address_vat_id"
+                                                    name="order[billing_address][vat_id]" value="" class=" input-text"
+                                                    type="text">
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="order-save-in-address-book">
+                            <input name="order[billing_address][save_in_address_book]" type="checkbox"
+                                id="order-billing_address_save_in_address_book" value="1">
+                            <label for="order-billing_address_save_in_address_book">Save in address book</label>
+                        </div>
+                    </div>
+                    <div style="display:none;" id="address-billing-overlay" class="overlay"><span>Shipping address
+                            selection
+                            is not applicable</span></div>
+
+                </fieldset>
+            </div>
+        </div>
+        <div id="order-shipping_address" class="box-right">
+            <div class="entry-edit" style="position: relative;">
+
+                <div class="entry-edit-head">
+                    <h4 class="icon-head fieldset-legend head-shipping-address">Shipping Address</h4>
+                </div>
+
+                <fieldset class="np">
+                    <div id="order-shipping_address_choice" class="order-choose-address">
+
+                        <input type="checkbox" id="order-shipping_as_billing" name="shipping_as_billing">
+                        <label for="order-shipping_as_billing" class="no-float">Same As Billing Address</label>
+                    </div>
+
+                    <div class="order-address" id="order-shipping_address_fields">
+                        <div class="content">
+                            <div class="hor-scroll">
+                                <table cellspacing="0" class="form-list">
+                                    <tbody>
+                                        <tr>
+                                            <td class="label"><label for="order-shipping_address_prefix">Prefix</label>
+                                            </td>
+                                            <td class="value">
+                                                <input id="order-shipping_address_prefix"
+                                                    name="order[shipping_address][prefix]" value="" class=" input-text"
+                                                    type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-shipping_address_firstname">First Name
+                                                    <span class="required">*</span></label></td>
+                                            <td class="value">
+                                                <input id="order-shipping_address_firstname"
+                                                    name="order[shipping_address][firstname]" value=""
+                                                    class=" required-entry input-text required-entry" type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-shipping_address_middlename">Middle
+                                                    Name/Initial</label></td>
+                                            <td class="value">
+                                                <input id="order-shipping_address_middlename"
+                                                    name="order[shipping_address][middlename]" value=""
+                                                    class=" input-text" type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-shipping_address_lastname">Last Name
+                                                    <span class="required">*</span></label></td>
+                                            <td class="value">
+                                                <input id="order-shipping_address_lastname"
+                                                    name="order[shipping_address][lastname]" value=""
+                                                    class=" required-entry input-text required-entry" type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-shipping_address_suffix">Suffix</label>
+                                            </td>
+                                            <td class="value">
+                                                <input id="order-shipping_address_suffix"
+                                                    name="order[shipping_address][suffix]" value="" class=" input-text"
+                                                    type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label
+                                                    for="order-shipping_address_company">Company</label>
+                                            </td>
+                                            <td class="value">
+                                                <input id="order-shipping_address_company"
+                                                    name="order[shipping_address][company]" value="" class=" input-text"
+                                                    type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-shipping_address_street0">Street Address
+                                                    <span class="required">*</span></label></td>
+                                            <td class="value">
+                                                <input id="order-shipping_address_street0"
+                                                    name="order[shipping_address][street]" value=""
+                                                    class="input-text required-entry" type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-shipping_address_city">City <span
+                                                        class="required">*</span></label></td>
+                                            <td class="value">
+                                                <input id="order-shipping_address_city"
+                                                    name="order[shipping_address][city]" value=""
+                                                    class=" required-entry input-text required-entry" type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label>Country<span class="required">*</span></label>
+                                            </td>
+                                            <td class="value">
+                                                <select name="order[shipping_address][country]"
+                                                    class="required-entry required-entry select">
+                                                    <?php foreach ($countries as $country) : ?>
+                                                    <option value="<?php echo $country['value'] ?>"
+                                                        <?php //if ($country['value'] == $addresses['country']) : ?><?php // endif; ?>>
+                                                        <?php echo $country['label'] ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-shipping_address_region">State <span
+                                                        class="required">*</span></label></td>
+                                            <td class="value">
+                                                <input id="order-shipping_address_region"
+                                                    name="order[shipping_address][region]" value=""
+                                                    class=" required-entry input-text required-entry" type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-shipping_address_postcode">Zip/Postal
+                                                    Code
+                                                    <span class="required">*</span></label></td>
+                                            <td class="value">
+                                                <input id="order-shipping_address_postcode"
+                                                    name="order[shipping_address][postcode]" value=""
+                                                    class=" required-entry input-text required-entry" type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-shipping_address_telephone">Telephone
+                                                    <span class="required">*</span></label></td>
+                                            <td class="value">
+                                                <input id="order-shipping_address_telephone"
+                                                    name="order[shipping_address][telephone]" value=""
+                                                    class=" required-entry input-text required-entry" type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-shipping_address_fax">Fax</label></td>
+                                            <td class="value">
+                                                <input id="order-shipping_address_fax"
+                                                    name="order[shipping_address][fax]" value="" class=" input-text"
+                                                    type="text">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label for="order-shipping_address_vat_id">VAT
+                                                    number</label>
+                                            </td>
+                                            <td class="value">
+                                                <input id="order-shipping_address_vat_id"
+                                                    name="order[shipping_address][vat_id]" value="" class=" input-text"
+                                                    type="text">
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="order-save-in-address-book">
+                            <input name="order[shipping_address][save_in_address_book]" type="checkbox"
+                                id="order-shipping_address_save_in_address_book">
+                            <label for="order-shipping_address_save_in_address_book">Save in address book</label>
+                        </div>
+                    </div>
+
+
+                </fieldset>
+            </div>
+        </div>
+
+    </div>
+</form>

@@ -1,0 +1,91 @@
+<?php $addresses = $this->getBillingAddress(); 
+$countries = $this->getCountries();
+?>
+
+<div id="order-addresses">
+    <form id="billingAddressForm" method="post"
+        action="<?php echo $this->getUrl('order/adminhtml_order_cart/saveBillingAddress',['id' =>$this->getRequest()->getParam('id')]); ?>">
+        <?php echo $this->getBlockHtml('formkey'); ?>
+        <div id="order-billing_address" class="box-left">
+            <div class="entry-edit">
+
+                <div class="entry-edit-head">
+                    <h4 class="icon-head fieldset-legend head-billing-address">Billing Address</h4>
+                    <button type="submit" name="button" style="float: right;">Save</button>
+                </div>
+
+                <fieldset class="np">
+
+                    <div class="order-address" id="order-billing_address_fields">
+                        <div class="content">
+                            <div class="hor-scroll">
+                                <table cellspacing="0" class="form-list">
+                                    <tbody>
+
+                                        <tr>
+                                            <td class="label"><label>Street
+                                                    Address
+                                                    <span class="required">*</span></label></td>
+                                            <td class="value">
+                                                <div class="multi-input"><input name="billing[street]"
+                                                        value="<?php echo $addresses['street']; ?>"
+                                                        class=" input-text required-entry" type="text" required>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label>Zip/Postal
+                                                    Code
+                                                    <span class="required">*</span></label></td>
+                                            <td class="value">
+                                                <input name="billing[postcode]"
+                                                    value="<?php echo $addresses['postcode']; ?>"
+                                                    class=" required-entry input-text required-entry" type="text"
+                                                    required>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label>State <span class="required">*</span></label></td>
+                                            <td class="value">
+                                                <input name="billing[region]"
+                                                    value="<?php echo $addresses['region']; ?>"
+                                                    class=" required-entry input-text required-entry" type="text"
+                                                    required>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label>City <span class="required">*</span></label></td>
+                                            <td class="value">
+                                                <input name="billing[city]" value="<?php echo $addresses['city']; ?>"
+                                                    class=" required-entry input-text required-entry" type="text"
+                                                    required>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label"><label>Country<span class="required">*</span></label>
+                                            </td>
+                                            <td class="value">
+                                                <select name="billing[country]"
+                                                    class="required-entry required-entry select">
+                                                    <?php foreach ($countries as $country) : ?>
+                                                    <option value="<?php echo $country['value'] ?>"
+                                                        <?php if ($country['value'] == $addresses['country']) : ?>selected<?php endif; ?>>
+                                                        <?php echo $country['label'] ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="order-save-in-address-book">
+                            <input name="saveBillingAddress" type="checkbox">
+                            <label>Save in address book</label>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+        </div>
+    </form>
