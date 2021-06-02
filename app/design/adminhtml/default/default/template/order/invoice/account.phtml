@@ -1,0 +1,70 @@
+<?php $customer = $this->getOrder()->getCustomer(); ?>
+<div id="order-form_account">
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head fieldset-legend head-account">Account Information</h4>
+        </div>
+        <div id="customer_account_fieds">
+            <div class="fieldset " id="main">
+                <div class="hor-scroll">
+                    <table cellspacing="0" class="form-list">
+                        <tbody>
+                            <tr>
+                                <td class="label"><label for="group_id">Group <span class="required">*</span></label>
+                                </td>
+                                <td class="value">
+                                    <input id="email" name="order[account][email]"
+                                        value="<?php echo $customer->getFirstname().' '.$customer->getLastname(); ?>"
+                                        class=" validate-email input-text" type="text" readonly>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="label"><label for="email">Email</label></td>
+                                <td class="value">
+                                    <input id="email" name="order[account][email]"
+                                        value=<?php echo $customer->getEmail(); ?> class="validate-email input-text"
+                                        type="text" readonly>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-account">Account Information</h4>
+        <div class="tools"></div>
+    </div>
+    <div class="fieldset">
+        <div class="hor-scroll">
+            <table cellspacing="0" class="form-list">
+                <tbody>
+                    <tr>
+                        <td class="label"><label>Customer Name</label></td>
+                        <td class="value">
+                            <a href="http://127.0.0.1/magento/index.php/admin/customer/edit/id/1/key/13705dac660291d94b68bfe4be4c57a0/"
+                                target="_blank"><strong>Vaishnavi Devendra Pandit</strong></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label>Email</label></td>
+                        <td class="value"><a
+                                href="mailto:vaishnavipandit168@gmail.com"><strong>vaishnavipandit168@gmail.com</strong></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label>Customer Group</label></td>
+                        <td class="value"><strong>General</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label>Middle Name/Initial</label></td>
+                        <td class="value"><strong>Devendra</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> -->

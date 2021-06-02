@@ -1,0 +1,18 @@
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4>Add Products</h4>
+        <div style="float: right;">
+            <button type=button name=button style="float: right;" onclick="showProduct();">Add Product</button>
+        </div>
+    </div>
+</div>
+
+<div id="products" style="display:none;">
+    <?php echo $this->getChildHtml('product_grid'); ?>
+</div>
+
+<script type="text/javascript">
+function showProduct() {
+    document.getElementById('products').style.display = "block";
+}
+</script>
