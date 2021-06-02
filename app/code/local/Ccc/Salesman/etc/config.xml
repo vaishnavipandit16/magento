@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Ccc_Salesman>
+            <version>0.0.1</version>
+        </Ccc_Salesman>
+    </modules>
+    <adminhtml>
+        <menu>
+            <Salesman salesman="salesman">
+                <title>Salesman</title>
+                <sort_order>92</sort_order>
+                <children>
+                    <salesman module="salesman">
+                        <title>Manage Salesman</title>
+                        <sort_order>0</sort_order>
+                        <action>salesman/adminhtml_salesman</action>
+                    </salesman>
+                </children>
+            </Salesman>
+        </menu>
+    </adminhtml>
+    <admin>
+        <routers>
+            <salesman>
+                <use>admin</use>
+                <args>
+                    <module>Ccc_Salesman</module>
+                    <frontName>salesman</frontName>
+                </args>
+            </salesman>
+        </routers>
+    </admin>
+    <global>
+        <blocks>
+            <ccc_salesman>
+                <class>Ccc_Salesman_Block</class>
+            </ccc_salesman>
+            <ccc_salesman_admin>
+                <class>Ccc_Salesman_Block_Adminhtml</class>
+            </ccc_salesman_admin>
+        </blocks>
+
+        <helpers>
+            <salesman>
+                <class>Ccc_Salesman_Helper</class>
+            </salesman>
+        </helpers>
+        <models>
+            <ccc_salesman>
+                <class>Ccc_Salesman_Model</class>
+                <resourceModel>ccc_salesman_resource</resourceModel>
+            </ccc_salesman>
+            <ccc_salesman_resource>
+                <class>Ccc_Salesman_Model_Resource</class>
+                <entities>
+                    <data>
+                        <table>ccc_salesman_data</table>
+                    </data>
+                </entities>
+            </ccc_salesman_resource>
+        </models>
+        <resources>
+            <salesman_setup>
+                <setup>
+                    <module>Ccc_Salesman</module>
+                </setup>
+            </salesman_setup>
+        </resources>
+    </global>
+</config>
