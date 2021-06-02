@@ -11,7 +11,7 @@ $this->addEntityType(Ccc_Competitor_Model_Resource_Competitor::ENTITY,[
     'entity_attribute_collection' => 'competitor/competitor_attribute_collection',
 
 ]);
-// $this->createEntityTables('competitor');
+$this->createEntityTables('competitor');
 // $this->installEntities();
 
 $default_attribute_set_id = Mage::getModel('eav/entity_setup','core_setup')
