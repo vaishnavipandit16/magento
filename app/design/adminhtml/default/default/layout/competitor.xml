@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_competitor_attribute_edit>
+        <reference name="left">
+            <block type="competitor/adminhtml_competitor_attribute_edit_tabs" name="competitor_edit_tabs"></block>
+        </reference>
+        <reference name="content">
+            <block type="competitor/adminhtml_competitor_attribute_edit" name="competitor_edit_content"></block>
+        </reference>
+        <reference name="js">
+            <block type="adminhtml/template" name="attribute_edit_js" template="competitor/attribute/js.phtml"></block>
+        </reference>
+    </adminhtml_competitor_attribute_edit>
+
+
+    <adminhtml_competitor_edit>
+        <update handle="editor" />
+        <reference name="content">
+            <block type="competitor/adminhtml_competitor_edit" name="competitor_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="competitor/adminhtml_competitor_edit_tabs" name="competitor_tabs"></block>
+        </reference>
+        <reference name="js">
+            <block type="adminhtml/catalog_product_edit_js" template="catalog/product/js.phtml" name="catalog_product_js"></block>
+            <block type="core/template" template="catalog/wysiwyg/js.phtml" />
+        </reference>
+    </adminhtml_competitor_edit>
+</layout>
